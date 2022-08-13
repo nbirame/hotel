@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="chambre">
+      <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+            <center><h3 class="titre">Chambres de luxe</h3></center>
+                <t t-foreach="chambres" t-as="chambre">
+                    <div class="row">
+                        <div class="col-lg-3 bir">
+                            <div class="col-md-4">
+                               <div class="card" style="width: 18rem;">
+                                  <img  t-attf-src="data:image/*;base64,{{chambre.profile}}" t-att-alt="chambre.profile" class="card-img-top"/>
+                                  <div class="card-body">
+                                    <h4><span t-esc="chambre.numero"/></h4>
+                                    <p class="card-text">
+                                        <span t-field="chambre.infor" widget="html"/>
+                                    </p>
+                                    <h3>
+                                        <a t-attf-href="/chambre/detail/#{ slug(chambre) }"  class="btn btn-info">
+                                            En Savoir Plus
+                                            <!-- <span t-field="chambre.numero"/> -->
+                                        </a>
+                                    </h3>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+          </div>
+        </div>
+      </t>
+    </template>
+
+
+    <template id="show">
+      <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+            <center><h3>Chambres</h3></center>
+            <div class="row">
+                <div class="col-sm-6">
+                       <div class="card" style="width: 18rem;">
+                          <img  t-attf-src="data:image/*;base64,{{chambre.profile}}" t-att-alt="chambre.profile" class="card-img-top"/>
+                          <div class="card-body">
+                            <h4><span t-esc="chambre.numero"/></h4>
+                            <p class="card-text">
+                                <span t-field="chambre.infor" widget="html"/>
+                            </p>
+                            <h4>
+                                <a t-attf-href="/chambre/detail/louer/#{ slug(chambre) }"  class="btn btn-info">Louer</a>
+                            </h4>
+                          </div>
+                       </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+
+    <template id="louer">
+    <t t-call="website.layout">
+        <t t-set="additional_title">Loucation</t>
+
+        <div id="wrap"  class="container">
+            <h1 class="text-center mt-2">
+                Location 
+            </h1>
+            <!-- <h2 t-if="chambre" class="text-center text-muted">
+                <img  t-attf-src="data:image/*;base64,{{chambre.chambre_id.profile}}" t-att-alt="chambre.profile" class="card-img-top"/>
+            </h2> -->
+
+            <div class="row mt-3">
+                <section id="forms" class="col">
+                    <span class="hidden" data-for="hotel_location_form" t-att-data-values="{'chambre_id': chambre and chambre.chambre_id.id or '', 'chambre_id': chambre and chambre.id or ''}" />
+                    <form id="hotel_location_form" action="/website_form/" method="post" class="s_website_form" enctype="multipart/form-data" data-model_name="hotel.location" data-success_page="/job-thank-you" hide-change-model="true">
+                    <div class="form-group row form-field o_website_form_required_custom">
+                            <div class="col-lg-3 col-md-4 text-right">
+                                <label class="col-form-label" for="profile">Chambre</label>
+                            </div>
+                            <div class="col-lg-7 col-md-8">
+                                <input type="text" class="form-control o_website_form_input" name="profile" t-att-value="'chambre.numero'" required=""/>
+                            </div>
+                        </div>
+                        <div class="form-group row form-field o_website_form_required_custom">
+                            <div class="col-lg-3 col-md-4 text-right">
+                                <label class="col-form-label" for="dateloc">Date début de Location</label>
+                            </div>
+                            <div class="col-lg-7 col-md-8">
+                                <input type="date" class="form-control o_website_form_input" name="dateloc" required=""/>
+                            </div>
+                        </div>
+                        <div class="form-group row form-field o_website_form_required_custom">
+                            <div class="col-lg-3 col-md-4 text-right">
+                                <label class="col-form-label" for="nombre">Nombre de Jours</label>
+                            </div>
+                            <div class="col-lg-7 col-md-8">
+                                <input type="text" class="form-control o_website_form_input" name="nombre" required=""/>
+                            </div>
+                        </div>
+                        <div class="form-group row form-field o_website_form_required_custom">
+                            <div class="col-lg-3 col-md-4 text-right">
+                                <label class="col-form-label" for="datefinloc">Date Fin Location</label>
+                            </div>
+                            <div class="col-lg-7 col-md-8">
+                                <input type="date" class="form-control o_website_form_input" name="datefinloc" required=""/>
+                            </div>
+                        </div>
+                         <div class="form-group row form-field o_website_form_required_custom">
+                            <div class="col-lg-3 col-md-4 text-right">
+                                <label class="col-form-label" for="prix">Prix</label>
+                            </div>
+                            <div class="col-lg-7 col-md-8">
+                                <input type="text" class="form-control o_website_form_input" name="prix" required=""/>
+                            </div>
+                        </div>
+                         <div class="form-group row form-field o_website_form_required_custom">
+                            <div class="col-lg-3 col-md-4 text-right">
+                                <label class="col-form-label" for="total">Total</label>
+                            </div>
+                            <div class="col-lg-7 col-md-8">
+                                <input type="text" class="form-control o_website_form_input" name="total" required=""/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                                <a href="#" role="button" class="btn btn-primary btn-lg o_website_form_send">Submit</a>
+                                <span id="o_website_form_result"></span>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </t>
+</template>
+
+</odoo>
+

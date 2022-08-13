@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="show">
+      <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+            <center><h3>Chambres</h3></center>
+            <div class="row">
+                <div class="col-sm-6">
+                       <div class="card" style="width: 18rem;">
+                          <img  t-attf-src="data:image/*;base64,{{chambre.profile}}" t-att-alt="chambre.profile" class="card-img-top"/>
+                          <div class="card-body">
+                            <h4><span t-esc="chambre.numero"/></h4>
+                            <p class="card-text">
+                                <span t-field="chambre.infor" widget="html"/>
+                            </p>
+                          </div>
+                       </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+</odoo>
+

@@ -61,7 +61,7 @@
 
     <menuitem
         id="menu_hotel_location"
-        name="location"
+        name="Location"
         parent="menu_hotel_root"
         action="hotel_location_action"
         sequence="4"/>

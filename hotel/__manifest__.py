@@ -25,17 +25,20 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        #'views/views.xml',
+        'views/assets.xml',
         #'views/templates.xml',
+        'data/menu.xml',
         'views/chambre_views.xml',
         'views/location_views.xml',
-        'views/template.xml',
+        'views/template_chambre_view.xml',
+        #'views/template_detail',
         'views/templates2.xml',
+        'data/hotel_sequence.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    #  only loaded in demonstration mode
+    # 'demo': [
+    #     'demo/demo.xml',
+    # ],
     "installable": True,
     #'images': ['static/description/banner.png'],
     "auto_install": False,

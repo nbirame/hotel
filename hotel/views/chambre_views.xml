@@ -39,8 +39,9 @@
                 <sheet>  
                     <group>
                         <group>
-                            <field name="numero"/>
+                            <field name="numero" readonly="1"/>
                             <field name="infor"/>
+                            <field name="profile" widget="image" class="oe_avatar"/>
                         </group>
                     </group>
                 </sheet>
@@ -55,7 +56,7 @@
 
     <menuitem
         id="menu_hotel_chambre"
-        name="chambre"
+        name="Chambre"
         parent="menu_hotel_root"
         action="hotel_chambre_action"
         sequence="4"/>

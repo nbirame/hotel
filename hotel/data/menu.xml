@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="8">
+		<record id="menu_chambre" model="hotel.chambre">
+			<field name="chambre">Chambre</field>
+			<field name="url">/chambre</field>
+			<field name="parent_id" ref="website.main_menu"/>
+			<field name="sequence" type="int">18</field>
+		</record>
+	</data>
+</odoo>
